@@ -1,2 +1,3 @@
-# web-todo-list
-A simple web todo-list made with React.js.
+# Web todo-list
+
+This is a simple web todo-list app made with React.js.
