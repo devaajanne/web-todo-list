@@ -7,6 +7,7 @@ import TodoItem from "./Components/TodoItem.jsx";
 function App() {
   return (
     <>
+      <h1>Todo list app</h1>
       <TodoForm />
       <TodoList />
       <TodoItem />
