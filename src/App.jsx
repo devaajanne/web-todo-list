@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   // Add a single todo state
   const [todo, setTodo] = React.useState("");
+
   // Add a state for the list of all todos
   const [todos, setTodos] = React.useState([]);
 
@@ -15,9 +16,14 @@ function App() {
   // Adds the new todo to the list of todos
   const addTodoToTodosList = (event) => {
     event.preventDefault();
-    // Converts the todo to a list with single object, concatenates it to the list of todos and updates the state
-    setTodos(todos.concat([{ name: todo, completed: false }]));
-    setTodo("");
+    // Checks if the todo name is empty
+    if (todo === "") {
+      alert("Your todo name cannot be empty!");
+    } else {
+      // Converts the todo to a list with single object, concatenates it to the list of todos and updates the state
+      setTodos(todos.concat([{ name: todo, completed: false }]));
+      setTodo("");
+    }
   };
 
   // Deletes the todo from the correct index
