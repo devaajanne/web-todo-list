@@ -15,9 +15,8 @@ function App() {
   // Adds the new todo to the list of todos
   const addTodoToTodosList = (event) => {
     event.preventDefault();
-
-    // Converts the todo to a single-item list, concatenates it to the list of todos and updates the state
-    setTodos(todos.concat([todo]));
+    // Converts the todo to a list with single object, concatenates it to the list of todos and updates the state
+    setTodos(todos.concat([{ name: todo, completed: false }]));
     setTodo("");
   };
 
@@ -55,14 +54,13 @@ function App() {
         {/* Lists all the added todos from the todo list with a delete button */}
         {/* If the todo list is empty, a message is shown */}
         {/* Each todo gets a key, which is its index in the todo list */}
-        {/* FIX IN THE FUTURE? assing a key to each todo when creating said todo*/}
         {todos.length === 0 ? (
           <p>You have no todos!</p>
         ) : (
           <div>
             {todos.map((item, index) => (
               <li key={index}>
-                {item}
+                {item.name}
                 {/* When pressed, button sends the index of the to-be-deleted todo to the deleteTodo-function, so the correct todo can be removed */}
                 <button type="button" value={index} onClick={deleteTodo}>
                   Delete todo
