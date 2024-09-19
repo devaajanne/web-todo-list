@@ -29,15 +29,8 @@ function App() {
   // Deletes the todo from the correct index
   const deleteTodo = (event) => {
     const removedIndex = parseInt(event.target.value);
-
-    // Adds all the todos in the todo list before the index to a new list
-    const todosBeforeRemovedIndex = todos.slice(0, removedIndex);
-
-    // Adds all the todos in the todo list after the index to a new list
-    const todosAfterRemovedIndex = todos.slice(removedIndex + 1);
-
-    // Concatenates the two lists without the todo from the deleted index and updates the state
-    setTodos(todosBeforeRemovedIndex.concat(todosAfterRemovedIndex));
+    const newTodos = todos.filter((todo, index) => index !== removedIndex);
+    setTodos(newTodos);
   };
 
   return (
@@ -69,7 +62,7 @@ function App() {
                 {item.name}
                 {/* When pressed, button sends the index of the to-be-deleted todo to the deleteTodo-function, so the correct todo can be removed */}
                 <button type="button" value={index} onClick={deleteTodo}>
-                  Delete todo
+                  Delete
                 </button>
               </li>
             ))}
