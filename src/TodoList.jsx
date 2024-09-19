@@ -1,4 +1,6 @@
 import React from "react";
+import IncompleteTodos from "./IncompleteTodos.jsx";
+import CompleteTodos from "./CompleteTodos.jsx";
 
 function TodoList() {
   // Add a single todo state
