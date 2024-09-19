@@ -25,16 +25,19 @@ function TodoList() {
     if (todo.description === "") {
       alert("A todo cannot be empty.");
     } else {
+      // Adds the todo to the todo list and sets todo to its default values
       setTodos([...todos, todo]);
       setTodo({ ...todo, description: "", complete: false });
     }
   };
 
+  // Change show states according to user choices
   const showIncompleteTodoList = () => {
     setShowIncompleteTodos(true);
     setShowCompleteTodos(false);
   };
 
+  // Change show states according to user choices
   const showCompleteTodoList = () => {
     setShowIncompleteTodos(false);
     setShowCompleteTodos(true);
