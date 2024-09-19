@@ -30,13 +30,6 @@ function TodoList() {
     }
   };
 
-  // Deletes the todo from the correct index
-  const deleteTodo = (event) => {
-    const removedIndex = parseInt(event.target.value);
-    const newTodos = todos.filter((todo, index) => index !== removedIndex);
-    setTodos(newTodos);
-  };
-
   const showIncompleteTodoList = () => {
     setShowIncompleteTodos(true);
     setShowCompleteTodos(false);
@@ -69,28 +62,10 @@ function TodoList() {
       </button>
 
       <div>
-        {showIncompleteTodos && !showCompleteTodos && <IncompleteTodos />}
-
-        {!showIncompleteTodos && showCompleteTodos && <CompleteTodos />}
-        <p>This is your list of todos:</p>
-        {/* Lists all the added todos from the todo list with a delete button */}
-        {/* If the todo list is empty, a message is shown */}
-        {/* Each todo gets a key, which is its index in the todo list */}
-        {todos.length === 0 ? (
-          <p>You have no todos!</p>
-        ) : (
-          <div>
-            {todos.map((item, index) => (
-              <li key={index}>
-                {item.name}
-                {/* When pressed, button sends the index of the to-be-deleted todo to the deleteTodo-function, so the correct todo can be removed */}
-                <button type="button" value={index} onClick={deleteTodo}>
-                  Delete
-                </button>
-              </li>
-            ))}
-          </div>
+        {showIncompleteTodos && !showCompleteTodos && (
+          <IncompleteTodos todos={todos} setTodos={setTodos} />
         )}
+        {!showIncompleteTodos && showCompleteTodos && <CompleteTodos />}
       </div>
     </>
   );
