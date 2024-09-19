@@ -9,6 +9,9 @@ function TodoList() {
   // Add a state for the list of all todos
   const [todos, setTodos] = React.useState([]);
 
+  const [showIncompleteTodos, setShowIncompleteTodos] = React.useState(true);
+  const [showCompleteTodos, setShowCompleteTodos] = React.useState(false);
+
   // Sets the todo state according to user inputs
   const handleTodoChange = (event) => {
     setTodo(event.target.value);
@@ -34,6 +37,16 @@ function TodoList() {
     setTodos(newTodos);
   };
 
+  const showIncompleteTodoList = () => {
+    setShowIncompleteTodos(true);
+    setShowCompleteTodos(false);
+  };
+
+  const showCompleteTodoList = () => {
+    setShowIncompleteTodos(false);
+    setShowCompleteTodos(true);
+  };
+
   return (
     <>
       <h1>Your todos</h1>
@@ -48,6 +61,12 @@ function TodoList() {
         />
         <input type="submit" value="Add todo" />
       </form>
+      <button type="button" onclick={showIncompleteTodoList}>
+        Incompleted todos
+      </button>
+      <button type="button" onclick={showCompleteTodoList}>
+        Completed todos
+      </button>
 
       <div>
         <p>This is your list of todos:</p>
