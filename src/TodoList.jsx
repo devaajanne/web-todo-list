@@ -61,14 +61,17 @@ function TodoList() {
         />
         <input type="submit" value="Add todo" />
       </form>
-      <button type="button" onclick={showIncompleteTodoList}>
+      <button type="button" onClick={showIncompleteTodoList}>
         Incompleted todos
       </button>
-      <button type="button" onclick={showCompleteTodoList}>
+      <button type="button" onClick={showCompleteTodoList}>
         Completed todos
       </button>
 
       <div>
+        {showIncompleteTodos && !showCompleteTodos && <IncompleteTodos />}
+
+        {!showIncompleteTodos && showCompleteTodos && <CompleteTodos />}
         <p>This is your list of todos:</p>
         {/* Lists all the added todos from the todo list with a delete button */}
         {/* If the todo list is empty, a message is shown */}
