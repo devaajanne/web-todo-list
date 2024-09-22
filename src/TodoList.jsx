@@ -43,7 +43,7 @@ function TodoList() {
     setShowCompleteTodos(true);
   };
 
-  // Renreding time!
+  // Rendering time!
   return (
     <>
       <h1>Your todos</h1>
