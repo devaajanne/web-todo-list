@@ -82,8 +82,8 @@ function TodoList() {
       <div>
         {showIncompleteTodos && !showCompleteTodos && (
           <IncompleteTodos
-            todos={incompleteTodos}
-            setTodos={setIncompleteTodos}
+            incompleteTodos={incompleteTodos}
+            setIncompleteTodos={setIncompleteTodos}
           />
         )}
         {!showIncompleteTodos && showCompleteTodos && <CompleteTodos />}

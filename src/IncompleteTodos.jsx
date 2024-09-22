@@ -1,11 +1,13 @@
 import React from "react";
 
-function IncompleteTodos({ todos, setTodos }) {
+function IncompleteTodos({ incompleteTodos, setIncompleteTodos }) {
   // Deletes the todo from the correct index
   const deleteTodo = (event) => {
     const removedIndex = parseInt(event.target.value);
-    const newTodos = todos.filter((todo, index) => index !== removedIndex);
-    setTodos(newTodos);
+    const newTodos = incompleteTodos.filter(
+      (todo, index) => index !== removedIndex
+    );
+    setIncompleteTodos(newTodos);
   };
 
   return (
@@ -24,10 +26,10 @@ function IncompleteTodos({ todos, setTodos }) {
             </tr>
           </thead>
           <tbody>
-            {todos.length === 0 ? (
+            {incompleteTodos.length === 0 ? (
               <p>You have no todos!</p>
             ) : (
-              todos.map((item, index) => (
+              incompleteTodos.map((item, index) => (
                 <tr key={index}>
                   <td>{item.description}</td>
                   <td>{item.date}</td>
