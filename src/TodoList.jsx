@@ -10,8 +10,9 @@ function TodoList() {
     complete: false,
   });
 
-  // Add a state for the list of all todos
-  const [todos, setTodos] = React.useState([]);
+  // Add  states for the list of all incomplete and complete todos
+  const [incompleteTodos, setIncompleteTodos] = React.useState([]);
+  const [completeTodos, setCompleteTodos] = React.useState([]);
 
   // Set states to show either incomplete (default) or complete todos
   const [showIncompleteTodos, setShowIncompleteTodos] = React.useState(true);
@@ -34,8 +35,8 @@ function TodoList() {
     if (todo.description === "") {
       alert("A todo cannot be empty.");
     } else {
-      // Adds the todo to the todo list and sets todo to its default values
-      setTodos([...todos, todo]);
+      // Adds the todo to the incomplete todo list and sets todo to its default values
+      setIncompleteTodos([...incompleteTodos, todo]);
       setTodo({ ...todo, description: "", date: "", complete: false });
     }
   };
@@ -80,7 +81,10 @@ function TodoList() {
       {/* Renders either incomplete or complete todos, depending on users choices */}
       <div>
         {showIncompleteTodos && !showCompleteTodos && (
-          <IncompleteTodos todos={todos} setTodos={setTodos} />
+          <IncompleteTodos
+            todos={incompleteTodos}
+            setTodos={setIncompleteTodos}
+          />
         )}
         {!showIncompleteTodos && showCompleteTodos && <CompleteTodos />}
       </div>
