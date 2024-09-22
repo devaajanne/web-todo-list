@@ -1,6 +1,11 @@
 import React from "react";
 
-function IncompleteTodos({ incompleteTodos, setIncompleteTodos }) {
+function IncompleteTodos({
+  incompleteTodos,
+  setIncompleteTodos,
+  completeTodos,
+  setCompleteTodos,
+}) {
   // Deletes the todo from the correct index
   const deleteTodo = (event) => {
     const removedIndex = parseInt(event.target.value);
@@ -8,6 +13,12 @@ function IncompleteTodos({ incompleteTodos, setIncompleteTodos }) {
       (todo, index) => index !== removedIndex
     );
     setIncompleteTodos(newTodos);
+  };
+
+  const markCompleted = (event) => {
+    const completedIndex = parseInt(event.target.value);
+    setCompleteTodos([...completeTodos, incompleteTodos[completedIndex]]);
+    deleteTodo;
   };
 
   return (
@@ -37,6 +48,12 @@ function IncompleteTodos({ incompleteTodos, setIncompleteTodos }) {
                   <td>
                     <button type="button" value={index} onClick={deleteTodo}>
                       Delete
+                    </button>
+                  </td>
+                  {/* When pressed, button copies the todo to the list of completed todos and removes it from the list of incomplete todos */}
+                  <td>
+                    <button type="button" value={index} onClick={markCompleted}>
+                      Mark completed
                     </button>
                   </td>
                 </tr>
