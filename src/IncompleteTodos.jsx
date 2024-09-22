@@ -22,6 +22,7 @@ function IncompleteTodos({ todos, setTodos }) {
           {todos.map((item, index) => (
             <li key={index}>
               {item.description}
+              {item.date}
               {/* When pressed, button sends the index of the to-be-deleted todo to the deleteTodo-function, so the correct todo can be removed */}
               <button type="button" value={index} onClick={deleteTodo}>
                 Delete

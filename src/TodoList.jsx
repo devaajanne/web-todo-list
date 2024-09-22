@@ -4,7 +4,11 @@ import CompleteTodos from "./CompleteTodos.jsx";
 
 function TodoList() {
   // Add a single todo state
-  const [todo, setTodo] = React.useState({ description: "", complete: false });
+  const [todo, setTodo] = React.useState({
+    description: "",
+    dueDate: "",
+    complete: false,
+  });
 
   // Add a state for the list of all todos
   const [todos, setTodos] = React.useState([]);
@@ -18,6 +22,11 @@ function TodoList() {
     setTodo({ ...todo, description: event.target.value });
   };
 
+  // Sets the todo state according to user inputs
+  const handleTodoDateChange = (event) => {
+    setTodo({ ...todo, date: event.target.value });
+  };
+
   // Adds the new todo to the list of todos
   const addTodoToTodosList = (event) => {
     event.preventDefault();
@@ -27,7 +36,7 @@ function TodoList() {
     } else {
       // Adds the todo to the todo list and sets todo to its default values
       setTodos([...todos, todo]);
-      setTodo({ ...todo, description: "", complete: false });
+      setTodo({ ...todo, description: "", date: "", complete: false });
     }
   };
 
@@ -56,6 +65,7 @@ function TodoList() {
           value={todo.description}
           onChange={handleTodoDescriptionChange}
         />
+        <input type="date" value={todo.date} onChange={handleTodoDateChange} />
         <input type="submit" value="Add todo" />
       </form>
 
