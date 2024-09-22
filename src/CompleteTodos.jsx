@@ -3,7 +3,7 @@ import React from "react";
 function CompleteTodos({ completeTodos }) {
   return (
     <div>
-      <p>Incomplete todos</p>
+      <p>Complete todos</p>
       <p>This is your list of todos:</p>
       {/* Lists all the added todos from the todo list with a delete button */}
       {/* If the todo list is empty, a message is shown */}

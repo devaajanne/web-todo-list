@@ -7,19 +7,19 @@ function IncompleteTodos({
   setCompleteTodos,
 }) {
   // Deletes the todo from the correct index
-  const deleteTodo = (event) => {
+  function deleteTodo(event) {
     const removedIndex = parseInt(event.target.value);
     const newTodos = incompleteTodos.filter(
       (todo, index) => index !== removedIndex
     );
     setIncompleteTodos(newTodos);
-  };
+  }
 
-  const markCompleted = (event) => {
+  function markCompleted(event) {
     const completedIndex = parseInt(event.target.value);
     setCompleteTodos([...completeTodos, incompleteTodos[completedIndex]]);
-    deleteTodo;
-  };
+    deleteTodo(event);
+  }
 
   return (
     <div>
