@@ -15,22 +15,34 @@ function IncompleteTodos({ todos, setTodos }) {
       {/* Lists all the added todos from the todo list with a delete button */}
       {/* If the todo list is empty, a message is shown */}
       {/* Each todo gets a key, which is its index in the todo list */}
-      {todos.length === 0 ? (
-        <p>You have no todos!</p>
-      ) : (
-        <div>
-          {todos.map((item, index) => (
-            <li key={index}>
-              {item.description}
-              {item.date}
-              {/* When pressed, button sends the index of the to-be-deleted todo to the deleteTodo-function, so the correct todo can be removed */}
-              <button type="button" value={index} onClick={deleteTodo}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </div>
-      )}
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Todo</th>
+              <th>Due date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {todos.length === 0 ? (
+              <p>You have no todos!</p>
+            ) : (
+              todos.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.description}</td>
+                  <td>{item.date}</td>
+                  {/* When pressed, button sends the index of the to-be-deleted todo to the deleteTodo-function, so the correct todo can be removed */}
+                  <td>
+                    <button type="button" value={index} onClick={deleteTodo}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
