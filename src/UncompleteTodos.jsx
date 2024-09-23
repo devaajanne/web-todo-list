@@ -1,23 +1,23 @@
 import React from "react";
 
-function IncompleteTodos({
-  incompleteTodos,
-  setIncompleteTodos,
+function UncompleteTodos({
+  uncompleteTodos,
+  setUncompleteTodos,
   completeTodos,
   setCompleteTodos,
 }) {
   // Deletes the todo from the correct index
   function deleteTodo(event) {
     const removedIndex = parseInt(event.target.value);
-    const newTodos = incompleteTodos.filter(
+    const newTodos = uncompleteTodos.filter(
       (todo, index) => index !== removedIndex
     );
-    setIncompleteTodos(newTodos);
+    setUncompleteTodos(newTodos);
   }
 
   function markCompleted(event) {
     const completedIndex = parseInt(event.target.value);
-    setCompleteTodos([...completeTodos, incompleteTodos[completedIndex]]);
+    setCompleteTodos([...completeTodos, uncompleteTodos[completedIndex]]);
     deleteTodo(event);
   }
 
@@ -28,7 +28,7 @@ function IncompleteTodos({
       {/* Lists all the added todos from the todo list with a delete button */}
       {/* If the todo list is empty, a message is shown */}
       {/* Each todo gets a key, which is its index in the todo list */}
-      {incompleteTodos.length === 0 ? (
+      {uncompleteTodos.length === 0 ? (
         <p>You have no todos!</p>
       ) : (
         <div>
@@ -40,7 +40,7 @@ function IncompleteTodos({
               </tr>
             </thead>
             <tbody>
-              {incompleteTodos.map((item, index) => (
+              {uncompleteTodos.map((item, index) => (
                 <tr key={index}>
                   <td>{item.description}</td>
                   <td>{item.dueDate}</td>
@@ -66,4 +66,4 @@ function IncompleteTodos({
   );
 }
 
-export default IncompleteTodos;
+export default UncompleteTodos;

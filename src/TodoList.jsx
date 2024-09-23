@@ -1,5 +1,5 @@
 import React from "react";
-import IncompleteTodos from "./IncompleteTodos.jsx";
+import UncompleteTodos from "./UncompleteTodos.jsx";
 import CompleteTodos from "./CompleteTodos.jsx";
 
 function TodoList() {
@@ -11,11 +11,11 @@ function TodoList() {
   });
 
   // Add  states for the list of all incomplete and complete todos
-  const [incompleteTodos, setIncompleteTodos] = React.useState([]);
+  const [uncompleteTodos, setUncompleteTodos] = React.useState([]);
   const [completeTodos, setCompleteTodos] = React.useState([]);
 
   // Set states to show either incomplete (default) or complete todos
-  const [showIncompleteTodos, setShowIncompleteTodos] = React.useState(true);
+  const [showUncompleteTodos, setShowUncompleteTodos] = React.useState(true);
   const [showCompleteTodos, setShowCompleteTodos] = React.useState(false);
 
   // Sets the todo state according to user inputs
@@ -36,20 +36,20 @@ function TodoList() {
       alert("A todo cannot be empty.");
     } else {
       // Adds the todo to the incomplete todo list and sets todo to its default values
-      setIncompleteTodos([...incompleteTodos, todo]);
+      setUncompleteTodos([...uncompleteTodos, todo]);
       setTodo({ ...todo, description: "", dueDate: "", complete: false });
     }
   }
 
   // Change show states according to user choices
-  function showIncompleteTodoList() {
-    setShowIncompleteTodos(true);
+  function showUncompleteTodoList() {
+    setShowUncompleteTodos(true);
     setShowCompleteTodos(false);
   }
 
   // Change show states according to user choices
   function showCompleteTodoList() {
-    setShowIncompleteTodos(false);
+    setShowUncompleteTodos(false);
     setShowCompleteTodos(true);
   }
 
@@ -66,13 +66,17 @@ function TodoList() {
           value={todo.description}
           onChange={handleTodoDescriptionChange}
         />
-        <input type="date" value={todo.dueDate} onChange={handleTodoDateChange} />
+        <input
+          type="date"
+          value={todo.dueDate}
+          onChange={handleTodoDateChange}
+        />
         <input type="submit" value="Add todo" />
       </form>
 
       {/* Buttons to show either incomplete or complete todos */}
-      <button type="button" onClick={showIncompleteTodoList}>
-        Incompleted todos
+      <button type="button" onClick={showUncompleteTodoList}>
+        Uncompleted todos
       </button>
       <button type="button" onClick={showCompleteTodoList}>
         Completed todos
@@ -80,15 +84,15 @@ function TodoList() {
 
       {/* Renders either incomplete or complete todos, depending on users choices */}
       <div>
-        {showIncompleteTodos && !showCompleteTodos && (
-          <IncompleteTodos
-            incompleteTodos={incompleteTodos}
-            setIncompleteTodos={setIncompleteTodos}
+        {showUncompleteTodos && !showCompleteTodos && (
+          <UncompleteTodos
+            uncompleteTodos={uncompleteTodos}
+            setUncompleteTodos={setUncompleteTodos}
             completeTodos={completeTodos}
             setCompleteTodos={setCompleteTodos}
           />
         )}
-        {!showIncompleteTodos && showCompleteTodos && (
+        {!showUncompleteTodos && showCompleteTodos && (
           <CompleteTodos completeTodos={completeTodos} />
         )}
       </div>
