@@ -15,19 +15,16 @@ function TodoList() {
   const [uncompleteTodos, setUncompleteTodos] = React.useState([]);
   const [completeTodos, setCompleteTodos] = React.useState([]);
 
-  // Set states to show either incomplete (default) or complete todos
-  const [showUncompleteTodos, setShowUncompleteTodos] = React.useState(true);
+  // Set states to show either uncomplete (default) or complete todos
   const [showCompleteTodos, setShowCompleteTodos] = React.useState(false);
 
-  // Change show states according to user choices
+  // Show uncomplete todos
   function showUncompleteTodoList() {
-    setShowUncompleteTodos(true);
     setShowCompleteTodos(false);
   }
 
-  // Change show states according to user choices
+  // Show complete todos
   function showCompleteTodoList() {
-    setShowUncompleteTodos(false);
     setShowCompleteTodos(true);
   }
 
@@ -52,7 +49,7 @@ function TodoList() {
 
       {/* Renders either incomplete or complete todos, depending on users choices */}
       <div>
-        {showUncompleteTodos && !showCompleteTodos && (
+        {!showCompleteTodos && (
           <UncompleteTodos
             uncompleteTodos={uncompleteTodos}
             setUncompleteTodos={setUncompleteTodos}
@@ -60,9 +57,7 @@ function TodoList() {
             setCompleteTodos={setCompleteTodos}
           />
         )}
-        {!showUncompleteTodos && showCompleteTodos && (
-          <CompleteTodos completeTodos={completeTodos} />
-        )}
+        {showCompleteTodos && <CompleteTodos completeTodos={completeTodos} />}
       </div>
     </>
   );
