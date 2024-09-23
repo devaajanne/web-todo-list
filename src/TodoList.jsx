@@ -25,7 +25,7 @@ function TodoList() {
 
   // Sets the todo state according to user inputs
   function handleTodoDateChange(event) {
-    setTodo({ ...todo, date: event.target.value });
+    setTodo({ ...todo, dueDate: event.target.value });
   }
 
   // Adds the new todo to the list of todos
@@ -37,7 +37,7 @@ function TodoList() {
     } else {
       // Adds the todo to the incomplete todo list and sets todo to its default values
       setIncompleteTodos([...incompleteTodos, todo]);
-      setTodo({ ...todo, description: "", date: "", complete: false });
+      setTodo({ ...todo, description: "", dueDate: "", complete: false });
     }
   }
 
@@ -66,7 +66,7 @@ function TodoList() {
           value={todo.description}
           onChange={handleTodoDescriptionChange}
         />
-        <input type="date" value={todo.date} onChange={handleTodoDateChange} />
+        <input type="date" value={todo.dueDate} onChange={handleTodoDateChange} />
         <input type="submit" value="Add todo" />
       </form>
 

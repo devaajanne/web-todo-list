@@ -43,7 +43,7 @@ function IncompleteTodos({
               {incompleteTodos.map((item, index) => (
                 <tr key={index}>
                   <td>{item.description}</td>
-                  <td>{item.date}</td>
+                  <td>{item.dueDate}</td>
                   {/* When pressed, button sends the index of the to-be-deleted todo to the deleteTodo-function, so the correct todo can be removed */}
                   <td>
                     <button type="button" value={index} onClick={deleteTodo}>

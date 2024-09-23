@@ -23,7 +23,7 @@ function CompleteTodos({ completeTodos }) {
               {completeTodos.map((item, index) => (
                 <tr key={index}>
                   <td>{item.description}</td>
-                  <td>{item.date}</td>
+                  <td>{item.dueDate}</td>
                 </tr>
               ))}
             </tbody>
