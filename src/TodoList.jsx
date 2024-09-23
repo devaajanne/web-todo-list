@@ -19,17 +19,17 @@ function TodoList() {
   const [showCompleteTodos, setShowCompleteTodos] = React.useState(false);
 
   // Sets the todo state according to user inputs
-  const handleTodoDescriptionChange = (event) => {
+  function handleTodoDescriptionChange(event) {
     setTodo({ ...todo, description: event.target.value });
-  };
+  }
 
   // Sets the todo state according to user inputs
-  const handleTodoDateChange = (event) => {
+  function handleTodoDateChange(event) {
     setTodo({ ...todo, date: event.target.value });
-  };
+  }
 
   // Adds the new todo to the list of todos
-  const addTodoToTodosList = (event) => {
+  function addTodoToTodosList(event) {
     event.preventDefault();
     // Checks if the todo name is empty
     if (todo.description === "") {
@@ -39,19 +39,19 @@ function TodoList() {
       setIncompleteTodos([...incompleteTodos, todo]);
       setTodo({ ...todo, description: "", date: "", complete: false });
     }
-  };
+  }
 
   // Change show states according to user choices
-  const showIncompleteTodoList = () => {
+  function showIncompleteTodoList() {
     setShowIncompleteTodos(true);
     setShowCompleteTodos(false);
-  };
+  }
 
   // Change show states according to user choices
-  const showCompleteTodoList = () => {
+  function showCompleteTodoList() {
     setShowIncompleteTodos(false);
     setShowCompleteTodos(true);
-  };
+  }
 
   // Rendering time!
   return (
